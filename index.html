@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Library</title>
+</head>
+<body>
+
+  <!-- ============ HOME SECTION ============ -->
+  <!-- This is the only section visible when the page first loads -->
+  <div id="homeSection" class="section">
+
+    <div class="icon">📖</div>
+    <h1>City Library</h1>
+    <p class="greeting">Welcome, reader!</p>
+
+    <p class="intro">
+      City Library is a quiet place full of stories, knowledge, and
+      adventures waiting on the shelves. Whether you love mysteries,
+      history, or science, you will always find a book here that feels
+      like it was chosen just for you.
+    </p>
+
+    <div class="buttons">
+      <button id="goToBooksBtn" class="primary-btn">Explore Books</button>
+      <button id="goToQuizBtn" class="secondary-btn">Fun Quizzes</button>
+      <button id="goToAboutBtn" class="secondary-btn">About Us</button>
+    </div>
+
+  </div>
+
+  <!-- ============ BOOKS SECTION ============ -->
+  <!-- Hidden by default (see style.css) -->
+<div id="booksSection" class="section">
+
+  <h1>Explore Books</h1>
+  <p class="intro">Here you will find a few of our favorite reads.</p>
+  
+<div class="books-grid">
+  
+  <div class="book-card">
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGHfVtv37GygfLFGA2WYgMcnVAdaIonA4qkXfN-mhky0ufXcR1gnACc3F&s=10"alt="TheHobbitcover"class="book-img">  
+  <h3>The Hobbit</h3>
+  <p class="book-desc">A fantasy adventure following Bilbo Baggins on a journey.</p>
+  <button class="borrow-btn">Borrow</button>
+  </div>
+
+  <div class="book-card">
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_Iqs3xx1qag8RdN6sRodR5GtwXr1a7RHbw3QwFabmdioafoPB1M6YiT1g&s=10"alt="Lord of the Files"class="book-img">  
+  <h3>Lord of the Files</h3>
+  <p class="book-desc">The original cover artwork depicts the dense, claustrophobic jungle setting of the island where the boys are stranded.</p>
+  <button class="borrow-btn">Borrow</button>
+  </div>
+
+  <div class="book-card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSATbk6L8bJFTabTTpksATjBEmiPIT6i5zNbJkaaFBnNGZfxfKFHtQMEkHi&s=10" alt="The Great Gatsby cover" class="book-img">
+  <h3>The Great Gatsby</h3>
+  <p class="book-desc">A story of wealth, love, and the American Dream.</p>
+   <button class="borrow-btn">Borrow</button>
+  </div>
+
+  <div class="book-card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROyPKiiZpmP0e8cZNk1UVkehJZcTDH7DxbqLUK_gC_aAd1sFUsiPkS_LfS&s=10" alt="To Kill a Mockingbird cover" class="book-img">
+  <h3>To Kill a Mockingbird</h3>
+  <p class="book-desc">The original 1960 dust jacket designed by Shirley Smith features the iconic silhouette of a tree set against a deep maroon and dark green backdrop.</p>
+  <button class="borrow-btn">Borrow</button>
+  </div>
+
+  <div class="book-card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxgV__qXqu8PVPZkMGfSIHOBv9mY22iwjyYl5RY_7wLTgMrrkYrIneMaCt&s=10" alt="Animal Farm cover" class="book-img">
+  <h3>Animal Farm</h3>
+  <p class="book-desc">This modern minimalist design uses sharp contrast and bold colors to mirror Orwell's striking political allegory.</p>
+  <button class="borrow-btn">Borrow</button>
+  </div>
+
+  <div class="book-card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9hEHHwzuJAQY5R2yqa9UVKExEDW6HE3AisJcfsXIUbFGVtSoqdWNW9GjO&s=10" alt="PRIDE AND PREJUDICE cover" class="book-img">
+  <h3>TPRIDE AND PREJUDICE</h3>
+  <p class="book-desc">A witty classic of quick judgments, high-society drama, and unexpected romance.</p>
+  <button class="borrow-btn">Borrow</button>
+  </div>
+  
+</div>
+  <button id="backFromBooksBtn" class="secondary-btn">Back to Home</button>
+</div>
+    <!-- ============ BORROW DETAILS SECTION ============ -->
+  <!-- Hidden by default. Shown when a "Borrow" button is clicked. -->
+ <div id="borrowSection" class="section">
+
+    <h1>Borrow a Book</h1>
+    <p class="intro">Fill in your details to complete the borrow request.</p>
+
+    <form id="borrowForm">
+
+      <label for="borrowerName">Your Name</label>
+      <input type="text" id="borrowerName" placeholder="Enter your full name" required>
+
+      <label for="borrowerEmail">Your Email</label>
+      <input type="email" id="borrowerEmail" placeholder="Enter your email" required>
+
+      <label for="borrowertel">Your phone Number</label>
+      <input type="tel" id="borrowertel" placeholder="Enter your phone Number" required>
+
+      <label for="Member-ID">Your Member ID</label>
+      <input type="text" id="Member-ID" placeholder="Enter your Member ID" required>
+
+      <label for="Adress">Your Adress</label>
+      <input type="text" id="Adress" placeholder="Enter your Home Adress" required>
+      
+      <button type="submit" class="submit-btn">Confirm Borrow</button>
+      <button type="reset" class="refill-btn">reset</button>
+      <button type="button" id="backFromBorrowBtn" class="cancel-btn">Cancel Borrow</button>
+      
+    </form>
+
+    <p id="borrowStatus"></p>
+
+    <button id="backToHomeFromBorrow" class="secondary-btn">Back to Home</button>
+    
+  </div>
+  
+  <!-- ============ QUIZ SECTION ============ -->
+  <!-- Hidden by default (see style.css) -->
+  <div id="quizSection" class="section">
+
+    <h1>Fun Quiz</h1>
+    <p id="question">Loading question...</p>
+
+    <button class="answer" id="choice1">Choice 1</button>
+    <button class="answer" id="choice2">Choice 2</button>
+    <button class="answer" id="choice3">Choice 3</button>
+
+    <p id="result"></p>
+
+    <button id="nextBtn" class="secondary-btn">Next Question</button>
+
+    <button id="backFromQuizBtn" class="secondary-btn">Back to Home</button>
+
+  </div>
+
+  <!-- ============ ABOUT SECTION ============ -->
+  <!-- Hidden by default (see style.css) -->
+  <div id="aboutSection" class="section">
+
+    <h1>About Us</h1>
+    <p class="intro">
+      City Library has been serving readers for years, offering a calm
+      space to read, study, and discover new worlds.
+    </p>
+    
+ <div class="contact-info">
+  <h3>Contact Us</h3>
+  <p>📍 12 Nile Street, Cairo</p>
+  <p>📞 +20 100 123 4567</p>
+  <p>✉️ hello@citylibrary.com</p>
+</div>
+
+<div class="feedback-box">
+  <h3>Send Feedback</h3>
+  <textarea id="feedbackText" placeholder="Tell us what you think..."></textarea>
+  <button id="feedbackBtn" class="primary-btn">Submit Feedback</button>
+  <p id="feedbackStatus"></p>
+  
+</div>
+  <button id="backFromAboutBtn" class="secondary-btn">Back to Home</button>
+</div>
+
+<script src="./script.js"></script>
+</body>
+ </html>
+ 

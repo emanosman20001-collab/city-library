@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Georgia&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============ DESIGN TOKENS ============ */
+:root {
+  --bg-deep: #150e0a;        /* near-black warm brown, the "night" of the library */
+  --panel: #241a12;           /* card / section background */
+  --panel-raised: #2e2118;    /* slightly lighter, for inputs / inner elements */
+  --gold: #d4af37;            /* classic gold, borders + accents */
+  --gold-bright: #e8c874;     /* lit gold, headings + hover states */
+  --cherry: #6b1f2a;          /* black-cherry accent */
+  --text-main: #f0e6d2;       /* warm parchment text */
+  --text-muted: #b8a888;      /* secondary text */
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: radial-gradient(ellipse at top, #241a12 0%, var(--bg-deep) 70%);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ============ SECTION SHELL ============ */
+/* Each section is a card lit like a reading lamp: a soft gold glow behind it. */
+.section {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  background-color: var(--panel);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow:
+    0 0 60px rgba(212, 175, 55, 0.12),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#booksSection,
+#quizSection,
+#aboutSection,
+#borrowSection {
+  display: none;
+}
+
+#booksSection {
+  max-width: 820px;
+}
+
+/* ============ BOOK CARDS ============ */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 640px) {
+  .books-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.book-card {
+  background-color: var(--panel-raised);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  padding: 8px 8px 16px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.55), 0 0 18px rgba(212, 175, 55, 0.25);
+  border-color: var(--gold);
+}
+
+/* Cover is prominent but balanced, not overwhelming the card */
+.book-img {
+  width: 100%;
+  aspect-ratio: 2 / 2.6;
+  object-fit: cover;
+  border-radius: 4px 4px 2px 2px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+  transition: transform 0.2s ease-in-out;
+}
+
+.book-card:hover .book-img {
+  transform: scale(1.04);
+}
+
+.book-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--gold-bright);
+  margin-bottom: 6px;
+  line-height: 1.25;
+  padding: 0 6px;
+}
+
+/* Short description, capped to 2 lines so it stays quiet under the cover */
+.book-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  padding: 0 6px;
+  margin-bottom: 12px;
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--gold-bright);
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(232, 200, 116, 0.25);
+}
+
+.icon {
+  font-size: 46px;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.4));
+}
+
+.greeting {
+  font-size: 17px;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+p.intro {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+  color: var(--text-main);
+}
+
+/* ============ BUTTONS ============ */
+.buttons {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 26px;
+  border-radius: 4px;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  letter-spacing: 0.3px;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #e8c874, var(--gold), #a9821f);
+  color: #1a1108;
+  font-weight: bold;
+  border: none;
+}
+
+.primary-btn:hover {
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: linear-gradient(135deg, #e8c874, var(--gold), #a9821f);
+  color: #1a1108;
+  font-weight: bold;
+  border: none;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-color: var(--gold-bright);
+}
+
+/* ============ QUIZ ============ */
+#question {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  color: var(--gold-bright);
+  margin-bottom: 22px;
+}
+
+.answer {
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+  padding: 12px 24px;
+  font-size: 15px;
+  background-color: var(--panel-raised);
+  color: var(--text-main);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.answer:hover {
+  background-color: var(--cherry);
+  border-color: var(--cherry);
+  color: var(--text-main);
+}
+
+#result {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--gold-bright);
+  min-height: 24px;
+}
+
+.borrow-btn {
+  background: linear-gradient(135deg, #e8c874, var(--gold), #a9821f);
+  color: #1a1108;
+  font-weight: bold;
+  border: none;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 18px;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.borrow-btn:hover {
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.5);
+  transform: scale(1.07);
+}
+
+.borrow-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============ BORROW FORM ============ */
+#borrowForm {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+#borrowForm label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  letter-spacing: 0.3px;
+}
+
+#borrowForm input {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: var(--panel);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 4px;
+  color: var(--text-main);
+}
+
+#borrowForm input:focus {
+  outline: none;
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+#borrowForm input::placeholder {
+  color: #6e6153;
+}
+
+#borrowForm button {
+  margin-top: 10px;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #e8c874, var(--gold), #a9821f);
+  color: #1a1108;
+  font-weight: bold;
+  border: none;
+}
+
+.refill-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: var(--cherry);
+  border-color: var(--cherry);
+}
+
+.cancel-btn:hover {
+  background-color: rgba(107, 31, 42, 0.15);
+}
+
+#borrowStatus {
+  font-weight: bold;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+  min-height: 22px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .section, .book-card, .book-img, button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.contact-info {
+  margin: 25px 0;
+  padding: 18px;
+  background-color: var(--panel-raised);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+}
+
+.contact-info h3,
+.feedback-box h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.contact-info p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.feedback-box {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.feedback-box textarea {
+  width: 100%;
+  min-height: 80px;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: var(--panel);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 4px;
+  color: var(--text-main);
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.feedback-box textarea:focus {
+  outline: none;
+  border-color: var(--gold-bright);
+}
+
+#feedbackStatus {
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--gold-bright);
+}
